@@ -1,0 +1,38 @@
+.about {
+  //background-image:
+  //  linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), /* Градиент для плавного перехода */
+  //  url('@/assets/about-bg.png'); /* Второе изображение */
+  background: #FF3300;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 100vh;
+  position: relative;
+
+  .section-transition-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .section-transition-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+  }
+}

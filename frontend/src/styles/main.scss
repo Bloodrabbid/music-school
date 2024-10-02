@@ -1,0 +1,18 @@
+@import 'variables';
+
+// Layout
+@import 'components/layout/AppHeader';
+@import 'components/layout/AppFooter';
+
+// Sections
+@import 'components/sections/AboutSection';
+@import 'components/sections/AdvantagesSection';
+@import 'components/sections/ContactSection';
+@import 'components/sections/HeroSection';
+@import 'components/sections/ReviewsSection';
+@import 'components/sections/TeachersSection';
+
+// Common
+@import 'components/common/AdvantageCard';
+@import 'components/common/ReviewCarousel';
+@import 'components/common/QuizForm';

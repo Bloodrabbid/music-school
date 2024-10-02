@@ -1,0 +1,49 @@
+.reviews {
+  background-color: white;
+  color: black;
+  
+  &-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -20px;
+    padding: 20px;
+  }
+
+  .review-card {
+    flex: 0 0 300px;
+    margin-right: 20px;
+    scroll-snap-align: start;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: black;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  
+    button {
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+    }
+  }
+
+  .review-content {
+    text-align: center;
+  }
+
+  .review-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .review-author {
+    font-weight: bold;
+  }
+}

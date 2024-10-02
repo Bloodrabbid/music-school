@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 200">
+  <defs>
+    <filter id="roughness" x="-5%" y="-5%" width="150%" height="150%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise"/>
+  <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" />
+</filter>
+  </defs>
+
+  <path id="brushStroke" d="M10,150 Q40,40 300,40 T540,130" fill="#FF4500" filter="url(#roughness)">
+    <animate attributeName="d"
+         values="M10,150 Q10,40 300,40 T540,130;
+                 M30,155 Q40,35 350,35 T500,135;
+                 M10,150 Q10,40 300,40 T540,130"
+         dur="10s" repeatCount="indefinite" />
+    <animate attributeName="fill"
+             values="#FF4500;#FF6347;#FF4500"
+             dur="7s" repeatCount="indefinite" />
+  </path>
+
+  <g id="buttonText">
+    <text x="275" y="80" font-family="Roboto, sans-serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle">
+      ЗАПИСАТЬСЯ НА
+    </text>
+    <text x="275" y="120" font-family="Roboto, sans-serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle">
+      ПРОБНОЕ ЗАНЯТИЕ
+    </text>
+
+    <animate attributeName="opacity"
+             values="1;0.6;1"
+             dur="4s" repeatCount="indefinite" />
+  </g>
+</svg>
