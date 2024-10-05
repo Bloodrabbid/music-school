@@ -1,0 +1,39 @@
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@mixin card {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba($black, 0.1);
+  padding: 1.5rem;
+}
+
+@mixin button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: $accent-color;
+  color: $white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile + 1px}) and (max-width: $tablet) {
+    @content;
+  }
+}

@@ -1,0 +1,87 @@
+.drum-button {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    background-color: #f39c12; // оранжевый цвет для привлечения внимания
+    border-radius: 50%;
+    width: 60px; // Добавляем фиксированную ширину
+    height: 60px; // Добавляем фиксированную высоту
+    padding: 0; // Убираем padding, чтобы форма была ровной
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 9999; // Поверх всех элементов
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  
+    animation: drum-bounce 2s infinite;
+  }
+  
+  @keyframes drum-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .drum-button::before, .drum-button::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #f39c12;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-wave 1.5s infinite ease-out;
+    pointer-events: none;
+  }
+  
+  .drum-button::after {
+    width: 100px;
+    height: 100px;
+    animation-delay: 0.75s;
+  }
+  
+  @keyframes pulse-wave {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(2.5);
+      opacity: 0;
+    }
+  }
+  
+  .thought-bubble {
+    position: fixed;
+    right: 80px;
+    bottom: 150px;
+    max-width: 200px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    z-index: 9999; // Поверх всех элементов
+  
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: #fff transparent transparent transparent;
+    }
+  }
