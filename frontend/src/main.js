@@ -6,13 +6,13 @@ import router from './router' // Предполагается, что router н�
 import { scrollAnimation } from './directives/scrollAnimation'
 import './styles/main.scss'
 
-// Font Awesome Setup
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faClock, faUser, faMusic, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faUser, faMusic, faStar, faSearch, faGuitar, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 // Добавление иконок в библиотеку
-library.add(faClock, faUser, faMusic, faStar);
+library.add(faClock, faUser, faMusic, faStar, faSearch, faGuitar, faGraduationCap);
+
 
 const app = createApp(App)
 

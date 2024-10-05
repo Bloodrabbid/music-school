@@ -1,19 +1,23 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../animations';
+
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   text-align: center;
-  color: white;
+  color: $white;
   overflow: hidden;
 
-.section-transition-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-}
+  .section-transition-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: $z-content;
+  }
 
   .video-background {
     position: absolute;
@@ -42,7 +46,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); // Затемнение
+    background-color: rgba($black, 0.5);
   }
 
   .cta-button {
@@ -54,12 +58,12 @@
 
     &:hover {
       transform: scale(1.05);
-    }}
-
-    // Дополнительные стили для SVG, если нужно
-    text {
-      user-select: none; // Предотвращает выделение текста
     }
+
+    text {
+      user-select: none;
+    }
+  }
 
   &::before {
     content: '';
@@ -68,15 +72,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba($black, 0.5);
   }
 
   .container {
+    @include container;
     position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    z-index: $z-content;
   }
 
   h1 {
@@ -90,18 +92,7 @@
   }
 
   .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: var(--accent-color-dark, #e6a800);
-    }
+    @include button;
   }
 
   .animated-background {
@@ -111,14 +102,14 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
-    z-index: 1;
-    animation: fade-in 0.5s ease-out forwards;
+    z-index: $z-overlay;
+    animation: fadeInUp 0.5s ease-out forwards;
   }
 
   .note {
     position: absolute;
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba($white, 0.3);
     animation: float 20s linear infinite;
   }
 
@@ -129,8 +120,8 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: 1;
-    animation: fade-in 0.5s ease-out forwards;
+    z-index: $z-overlay;
+    animation: fadeInUp 0.5s ease-out forwards;
   }
 
   .instrument {
@@ -138,23 +129,6 @@
     font-size: 40px;
     opacity: 0.7;
     animation: float 15s infinite linear;
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(100vh) rotate(0deg);
-      opacity: 0;
-    }
-    10% {
-      opacity: 0.7;
-    }
-    90% {
-      opacity: 0.7;
-    }
-    100% {
-      transform: translateY(-100vh) rotate(360deg);
-      opacity: 0;
-    }
   }
 
   @for $i from 1 through 8 {
@@ -166,19 +140,10 @@
 }
 
 .fade-in-up {
-  opacity: 0;
-  transform: translateY(20px);
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
+@include mobile {
   .hero {
     h1 {
       font-size: 2.5rem;

@@ -1,37 +1,27 @@
+@import '../../variables';
+@import '../../mixins';
+
 .app-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Немного усилен тень */
+  z-index: $z-header;
+  box-shadow: 0 2px 8px rgba($black, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  background: rgba($black, 0.6);
 
-  /* Усиленный эффект прозрачного окна */
-  backdrop-filter: blur(7px); /* Увеличено размытие */
-  -webkit-backdrop-filter: blur(7px); /* Для поддержки в Safari */
-
-  /* Добавляем легкий цветовой оттенок для более "матового" эффекта */
-  background: rgba(0, 0, 0, 0.6);
-  /* Если хотите добавить легкий цветовой оттенок, например, голубой:
-  background: rgba(255, 255, 255, 0.6);
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.6)
-  );
-  */
-
-  /* Скрываем хедер вверх за пределы экрана */
   &.header-hidden {
     transform: translateY(-100%);
   }
 
   .container {
+    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 1rem 20px;
   }
 
@@ -52,13 +42,13 @@
         margin-left: 2rem;
 
         a {
-          color: var(--text-color);
+          color: $white; // Изменено на белый цвет
           text-decoration: none;
           font-weight: 500;
           transition: color 0.3s ease;
 
           &:hover {
-            color: var(--primary-color);
+            color: $accent-color; // Изменено на акцентный цвет при наведении
           }
         }
       }
@@ -76,26 +66,17 @@
     .line {
       width: 100%;
       height: 3px;
-      background-color: var(--text-color);
+      background-color: $white; // Изменено на белый цвет
       position: absolute;
       transition: all 0.3s ease;
 
-      &:nth-child(1) {
-        top: 0;
-      }
-
-      &:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      &:nth-child(3) {
-        bottom: 0;
-      }
+      &:nth-child(1) { top: 0; }
+      &:nth-child(2) { top: 50%; transform: translateY(-50%); }
+      &:nth-child(3) { bottom: 0; }
     }
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     height: 60px;
     overflow: hidden;
 
@@ -124,6 +105,7 @@
 
           a {
             font-size: 1.2rem;
+            color: $white; // Убедимся, что цвет остается белым на мобильных устройствах
           }
         }
       }

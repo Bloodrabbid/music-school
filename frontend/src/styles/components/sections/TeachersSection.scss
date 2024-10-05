@@ -1,12 +1,13 @@
+@import '../../variables';
+@import '../../mixins';
+
 .teachers {
   padding: 4rem 0;
-  background-color: #f9f9f9;
-  color: black;
+  background-color: $background-color;
+  color: $black;
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+    @include container;
   }
 
   .section-title {
@@ -21,13 +22,9 @@
   }
 
   .teacher-card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    @include card;
     text-align: center;
     transition: transform 0.3s ease;
-    color: black;
 
     &:hover {
       transform: translateY(-5px);
@@ -48,7 +45,7 @@
 
     .bio {
       font-size: 0.9rem;
-      color: #666;
+      color: lighten($black, 40%);
     }
   }
 }

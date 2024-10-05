@@ -1,6 +1,9 @@
+@import '../../variables';
+@import '../../mixins';
+
 .reviews {
-  background-color: white;
-  color: black;
+  background-color: $white;
+  color: $black;
   
   &-slider {
     display: flex;
@@ -15,11 +18,7 @@
     flex: 0 0 300px;
     margin-right: 20px;
     scroll-snap-align: start;
-    background-color: var(--background-color);
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: black;
+    @include card;
   }
 
   .pagination {
@@ -29,6 +28,7 @@
     margin-top: 2rem;
   
     button {
+      @include button;
       padding: 0.5rem 1rem;
       margin: 0 0.5rem;
     }

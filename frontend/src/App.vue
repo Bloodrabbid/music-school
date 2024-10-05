@@ -4,17 +4,18 @@
     <main>
         <HeroSection />
         <AboutSection />
-      <AdvantagesSection/>
-      <TeachersSection/>
-      <ReviewsSection/>
-      <ContactSection/>
+        <AdvantagesSection/>
+        <TeachersSection/>
+        <ReviewsSection/>
+        <ContactSection/>
     </main>
     <AppFooter :menuItems="menuItems"/>
+    <DrumButton />
   </div>
 </template>
 
 <script>
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 import AppHeader from "@/styles/components/layout/AppHeader.vue";
 import AppFooter from "@/styles/components/layout/AppFooter.vue";
 import HeroSection from "@/styles/components/sections/HeroSection.vue";
@@ -23,6 +24,7 @@ import AdvantagesSection from "@/styles/components/sections/AdvantagesSection.vu
 import TeachersSection from "@/styles/components/sections/TeachersSection.vue";
 import ReviewsSection from "@/styles/components/sections/ReviewsSection.vue";
 import ContactSection from "@/styles/components/sections/ContactSection.vue";
+import DrumButton from "@/styles/components/layout/DrumButton.vue";
 
 export default defineComponent({
   name: 'App',
@@ -35,6 +37,7 @@ export default defineComponent({
     TeachersSection,
     ReviewsSection,
     ContactSection,
+    DrumButton,
   },
   setup() {
     const menuItems = ref([
