@@ -1,0 +1,6 @@
+/frontend/src/package-lock.json
+/frontend/package-lock.json
+/frontend/node_modules/
+/.vscode/
+/.idea/
+/.idea/.gitignore
