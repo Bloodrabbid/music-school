@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header" :class="{ 'menu-open': isMenuOpen }">
+  <header class="app-header" :class="{ 'menu-open': isMenuOpen, 'header-hidden': isHeaderHidden }">
     <div class="container">
       <div class="logo">
         <img src="../../../assets/logo.svg" alt="БУМ школа-студия музыки"/>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
 
 export default defineComponent({
   name: 'AppHeader',
@@ -29,26 +29,49 @@ export default defineComponent({
       required: true,
     },
   },
-  data() {
-    return {
-      isMenuOpen: false,
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-    closeMenu() {
-      this.isMenuOpen = false;
+  setup() {
+    const isMenuOpen = ref(false);
+    const isHeaderHidden = ref(false);
+    let lastScrollTop = 0;
+
+    const toggleMenu = () => {
+      isMenuOpen.value = !isMenuOpen.value;
+    };
+
+    const closeMenu = () => {
+      isMenuOpen.value = false;
+    };
+
+    const handleScroll = () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+        // Scrolling down
+        isHeaderHidden.value = true;
+      } else {
+        // Scrolling up
+        isHeaderHidden.value = false;
       }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      const menuItems = this.$el.querySelectorAll('nav ul li');
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    };
+
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll);
+      const menuItems = document.querySelectorAll('nav ul li');
       menuItems.forEach((item, index) => {
         item.style.setProperty('--item-index', index);
       });
     });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll);
+    });
+
+    return {
+      isMenuOpen,
+      isHeaderHidden,
+      toggleMenu,
+      closeMenu
+    };
   }
 });
 </script>

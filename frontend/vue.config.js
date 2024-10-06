@@ -19,5 +19,13 @@ module.exports = defineConfig({
         '@styles': path.resolve(__dirname, 'src/styles')
       }
     }
+  },
+  chainWebpack: config => {
+    config.module
+      .rule('yaml')
+      .test(/\.ya?ml$/)
+      .use('yaml-loader')
+      .loader('yaml-loader')
+      .end();
   }
 })
